@@ -32,6 +32,7 @@ public class CompositeAnimalCollectionViewController  {
 
     @FXML
     private Button backButton;
+
     @FXML
     private Button displayButton;
 
@@ -103,8 +104,8 @@ public class CompositeAnimalCollectionViewController  {
             } else {
                 // Handle error if no enclosure or composite collection is selected
                 Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("No Selection");
-                alert.setHeaderText("No Enclosure or Composite Collection Selected");
+                alert.setTitle("No selection");
+
                 alert.setContentText("Please select an enclosure or composite collection from the list.");
                 alert.showAndWait();
             }
@@ -116,8 +117,7 @@ public class CompositeAnimalCollectionViewController  {
 
         // Add sub-enclosures to the list
         for (AnimalCollection collection : selectedCompositeCollection.getCollections()) {
-            if (collection instanceof Enclosure) {
-                Enclosure enclosure = (Enclosure) collection;
+            if (collection instanceof Enclosure enclosure) {
                 subEnclosures.add(enclosure.getName());
             }
         }

@@ -21,6 +21,5 @@ public class EnclosureViewController {
         }
         animalListView.setItems(animalNames);
     }
-
-
+    
 }

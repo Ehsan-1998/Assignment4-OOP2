@@ -11,7 +11,7 @@ public class ZooApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("composite-animal-collection-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 350, 400);
+        Scene scene = new Scene(fxmlLoader.load(), 380, 400);
         stage.setTitle("ZooApplication");
         stage.setScene(scene);
         stage.show();
