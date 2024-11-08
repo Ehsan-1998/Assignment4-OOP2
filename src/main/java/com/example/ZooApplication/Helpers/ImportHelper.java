@@ -1,7 +1,7 @@
-package com.example.zooapplication.Helpers;
+package com.example.ZooApplication.Helpers;
 
 
-import com.example.zooapplication.Model.*;
+import com.example.ZooApplication.Model.*;
 
 /**
  * @author Matthias Harte

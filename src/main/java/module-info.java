@@ -1,10 +1,10 @@
-module com.example.zooapplication {
+module com.example.ZooApplication {
     requires javafx.controls;
     requires javafx.fxml;
 
 
-    opens com.example.zooapplication to javafx.fxml;
-    exports com.example.zooapplication;
-    exports com.example.zooapplication.Controllers;
-    opens com.example.zooapplication.Controllers to javafx.fxml;
+    opens com.example.ZooApplication to javafx.fxml;
+    exports com.example.ZooApplication;
+    exports com.example.ZooApplication.Controllers;
+    opens com.example.ZooApplication.Controllers to javafx.fxml;
 }

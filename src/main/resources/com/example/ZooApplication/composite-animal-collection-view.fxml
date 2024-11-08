@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="411.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ZooApplication.Controllers.CompositeAnimalCollectionViewController">
+    <children>
+        <Button fx:id="displayButton" layoutX="228.0" layoutY="344.0" onAction="#onDisplayButtonClick" mnemonicParsing="false" text="Display" />
+        <Button fx:id="backButton" layoutX="97.0" layoutY="344.0" onAction="#onBackButtonClick" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="Back" />
+        <ListView fx:id="enclosureListView" layoutX="97.0" layoutY="57.0" prefHeight="266.0" prefWidth="200.0" />
+    </children>
+</AnchorPane>
