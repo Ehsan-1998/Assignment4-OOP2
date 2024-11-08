@@ -54,4 +54,19 @@ public class CompositeAnimalCollection implements AnimalCollection {
 
 
     }
+
+    public CompositeAnimalCollection getCompositeByName(String name) {
+        if (this.name.equals(name)) {
+            return this;
+        }
+        for (AnimalCollection collection : this.getCollections()) {
+            if (collection instanceof CompositeAnimalCollection composite) {
+                CompositeAnimalCollection found = composite.getCompositeByName(name);
+                if (found != null) {
+                    return found;
+                }
+            }
+        }
+        return null;
+    }
 }

@@ -4,10 +4,10 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="411.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ZooApplication.Controllers.CompositeAnimalCollectionViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0" prefWidth="411.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ZooApplication.Controllers.CompositeAnimalCollectionViewController">
     <children>
-        <Button fx:id="displayButton" layoutX="228.0" layoutY="344.0" onAction="#onDisplayButtonClick" mnemonicParsing="false" text="Display" />
-        <Button fx:id="backButton" layoutX="97.0" layoutY="344.0" onAction="#onBackButtonClick" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="Back" />
-        <ListView fx:id="enclosureListView" layoutX="97.0" layoutY="57.0" prefHeight="266.0" prefWidth="200.0" />
+        <Button fx:id="displayButton" layoutX="227.0" layoutY="270.0" mnemonicParsing="false" onAction="#onDisplayButtonClick" text="Display" />
+        <Button fx:id="backButton" layoutX="105.0" layoutY="270.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0" prefWidth="55.0" text="Back" />
+        <ListView fx:id="enclosureListView" layoutX="51.0" layoutY="35.0" prefHeight="216.0" prefWidth="288.0" />
     </children>
 </AnchorPane>
