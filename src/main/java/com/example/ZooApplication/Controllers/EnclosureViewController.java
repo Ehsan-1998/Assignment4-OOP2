@@ -12,14 +12,14 @@ public class EnclosureViewController {
 
 
     @FXML
-    private ListView<String> animalListView;
+    private ListView<String> aAnimalListView;
 
-    public void setEnclosure(Enclosure enclosure) {
+    public void setEnclosure(Enclosure pEnclosure) {
         ObservableList<String> animalNames = FXCollections.observableArrayList();
-        for (Animal animal : enclosure.getAnimals()) {
+        for (Animal animal : pEnclosure.getAnimals()) {
             animalNames.add(animal.getName());
         }
-        animalListView.setItems(animalNames);
+        aAnimalListView.setItems(animalNames);
     }
     
 }

@@ -26,7 +26,7 @@ import java.io.IOException;
 public class CompositeAnimalCollectionViewController  {
 
     @FXML
-    private ListView<String> enclosureListView;
+    private ListView<String> aEnclosureListView;
 
     private final CompositeAnimalCollection aCompositeAnimalCollection = ImportHelper.createAnimals();
 
@@ -44,20 +44,20 @@ public class CompositeAnimalCollectionViewController  {
 
 
     private void populateEnclosureListView() {
-        ObservableList<String> enclosureNames = FXCollections.observableArrayList();
-        addEnclosureNames(aCompositeAnimalCollection, enclosureNames);
-        enclosureListView.setItems(enclosureNames);
+        ObservableList<String> aEnclosureNames = FXCollections.observableArrayList();
+        addEnclosureNames(aCompositeAnimalCollection, aEnclosureNames);
+        aEnclosureListView.setItems(aEnclosureNames);
     }
 
     // Recursively add the names of enclosures and composite collections to the list
-    private void addEnclosureNames(CompositeAnimalCollection collection, ObservableList<String> enclosureNames) {
-        for (AnimalCollection subCollection : collection.getCollections()) {
-            if (subCollection instanceof Enclosure) {
+    private void addEnclosureNames(CompositeAnimalCollection pCollection, ObservableList<String> enclosureNames) {
+        for (AnimalCollection aSubCollection : pCollection.getaCollections()) {
+            if (aSubCollection instanceof Enclosure) {
                 // Add only the top-level enclosures
-                enclosureNames.add(((Enclosure) subCollection).getName());
-            } else if (subCollection instanceof CompositeAnimalCollection composite) {
+                enclosureNames.add(((Enclosure) aSubCollection).getName());
+            } else if (aSubCollection instanceof CompositeAnimalCollection aComposite) {
                 // Add only the top-level composite collections (without their nested enclosures)
-                enclosureNames.add(composite.getName());
+                enclosureNames.add(aComposite.getName());
                 // Avoid recursion to nested enclosures
             }
         }
@@ -66,38 +66,38 @@ public class CompositeAnimalCollectionViewController  {
 
     @FXML
     protected void onDisplayButtonClick(ActionEvent pEvent) throws IOException {
-        String selectedEnclosureName = enclosureListView.getSelectionModel().getSelectedItem();
+        String aSelectedEnclosureName = aEnclosureListView.getSelectionModel().getSelectedItem();
 
         // Check if the selected item is an enclosure
-        Enclosure selectedEnclosure = aCompositeAnimalCollection.getEnclosureByName(selectedEnclosureName);
+        Enclosure aSelectedEnclosure = aCompositeAnimalCollection.getEnclosureByName(aSelectedEnclosureName);
 
-        if (selectedEnclosure != null) {
+        if (aSelectedEnclosure != null) {
             // If it's an enclosure, display its animals
             FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("enclosure-view.fxml"));
             Parent view = fxmlLoader.load();
             EnclosureViewController newEnclosureViewController = fxmlLoader.getController();
-            newEnclosureViewController.setEnclosure(selectedEnclosure);
+            newEnclosureViewController.setEnclosure(aSelectedEnclosure);
             Scene nextScene = new Scene(view, 500, 500);
             Stage nextStage = new Stage();
             nextStage.setScene(nextScene);
-            nextStage.setTitle(selectedEnclosure.getName());
+            nextStage.setTitle(aSelectedEnclosure.getName());
             nextStage.initModality(Modality.WINDOW_MODAL);
             nextStage.initOwner(((Node) pEvent.getSource()).getScene().getWindow());
             nextStage.showAndWait();
         } else {
             // If it's not an enclosure, check if it's a composite animal collection
-            CompositeAnimalCollection selectedCompositeCollection = aCompositeAnimalCollection.getCompositeByName(selectedEnclosureName);
+            CompositeAnimalCollection aSelectedCompositeCollection = aCompositeAnimalCollection.getCompositeByName(aSelectedEnclosureName);
 
-            if (selectedCompositeCollection != null) {
+            if (aSelectedCompositeCollection != null) {
                 // If it's a composite collection (e.g., Tigers), display the composite collection view
                 FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("composite-animal-collection-view.fxml"));
                 Parent view = fxmlLoader.load();
                 CompositeAnimalCollectionViewController compositeViewController = fxmlLoader.getController();
-                compositeViewController.setCompositeAnimalCollection(selectedCompositeCollection);
+                compositeViewController.setCompositeAnimalCollection(aSelectedCompositeCollection);
                 Scene nextScene = new Scene(view, 500, 500);
                 Stage nextStage = new Stage();
                 nextStage.setScene(nextScene);
-                nextStage.setTitle(selectedCompositeCollection.getName());
+                nextStage.setTitle(aSelectedCompositeCollection.getName());
                 nextStage.initModality(Modality.WINDOW_MODAL);
                 nextStage.initOwner(((Node) pEvent.getSource()).getScene().getWindow());
                 nextStage.showAndWait();
@@ -112,18 +112,18 @@ public class CompositeAnimalCollectionViewController  {
         }
     }
 
-    private void setCompositeAnimalCollection(CompositeAnimalCollection selectedCompositeCollection) {
-        ObservableList<String> subEnclosures = FXCollections.observableArrayList();
+    private void setCompositeAnimalCollection(CompositeAnimalCollection pSelectedCompositeCollection) {
+        ObservableList<String> aSubEnclosures = FXCollections.observableArrayList();
 
         // Add sub-enclosures to the list
-        for (AnimalCollection collection : selectedCompositeCollection.getCollections()) {
-            if (collection instanceof Enclosure enclosure) {
-                subEnclosures.add(enclosure.getName());
+        for (AnimalCollection aCollection : pSelectedCompositeCollection.getaCollections()) {
+            if (aCollection instanceof Enclosure aEnclosure) {
+                aSubEnclosures.add(aEnclosure.getName());
             }
         }
 
         // Assuming you have a ListView to display the sub-enclosures of the composite collection
-        enclosureListView.setItems(subEnclosures);
+        aEnclosureListView.setItems(aSubEnclosures);
     }
 
 
