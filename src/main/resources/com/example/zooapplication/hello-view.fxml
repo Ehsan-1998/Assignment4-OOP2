@@ -17,19 +17,20 @@
    <VBox prefHeight="176.0" prefWidth="338.0">
       <children>
          <Label text="Name" />
-         <TextField fx:id="nameTextField" onAction="#onNameTextField" prefWidth="338.0" />
+         <TextField fx:id="nameTextField" prefWidth="338.0" />
          <Label text="Sex" />
-         <TextField fx:id="sexTextField" onAction="#onSexTextField" />
+         <TextField fx:id="sexTextField" />
          <Label text="Age" />
-         <TextField fx:id="ageTextField" onAction="#onAgeTextField" />
+         <TextField fx:id="ageTextField" />
          <Label text="Weight" />
-         <TextField fx:id="weightTextField" onAction="#onWeightTextField" />
+         <TextField fx:id="weightTextField" />
       </children>
    </VBox>
    <AnchorPane prefHeight="116.0" prefWidth="338.0">
       <children>
          <Button fx:id="closeButton" layoutX="226.0" layoutY="2.0" mnemonicParsing="false" onAction="#onCloseButtonClick" text="Close" />
           <Button fx:id="saveButton" layoutX="140.0" layoutY="2.0" onAction="#onSaveButtonClick" text="Save" />
+         <Button fx:id="clearButton" layoutX="51.0" layoutY="1.0" mnemonicParsing="false" onAction="#onClearButtonClick" text="Clear" />
       </children>
    </AnchorPane>
 </VBox>
