@@ -1,6 +1,7 @@
 module com.example.ZooApplication {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     opens com.example.ZooApplication to javafx.fxml;
