@@ -8,6 +8,6 @@
     <children>
         <Button fx:id="displayButton" layoutX="227.0" layoutY="270.0" mnemonicParsing="false" onAction="#onDisplayButtonClick" text="Display" />
         <Button fx:id="backButton" layoutX="105.0" layoutY="270.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="25.0" prefWidth="55.0" text="Back" />
-        <ListView fx:id="enclosureListView" layoutX="51.0" layoutY="35.0" prefHeight="216.0" prefWidth="288.0" />
+        <ListView fx:id="aEnclosureListView" layoutX="51.0" layoutY="35.0" prefHeight="216.0" prefWidth="288.0" />
     </children>
 </AnchorPane>

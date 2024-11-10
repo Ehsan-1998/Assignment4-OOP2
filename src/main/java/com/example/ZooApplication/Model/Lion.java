@@ -1,21 +1,21 @@
 package com.example.ZooApplication.Model;
 
 public class Lion extends BigCat{
-    private final int weight;
-    private final int maneSize;
+    private final int aWeight;
+    private final int aManeSize;
 
-    public Lion(String name, int age, int weight, int maneSize) {
-        super(name, age); // Calling the constructor of the Animal superclass
-        this.weight = weight;
-        this.maneSize = maneSize;
+    public Lion(String pName, int pAge, int pWeight, int pManeSize) {
+        super(pName, pAge); 
+        this.aWeight = pWeight;
+        this.aManeSize = pManeSize;
     }
 
     // Getters for weight and maneSize
     public int getWeight() {
-        return weight;
+        return aWeight;
     }
 
     public int getManeSize() {
-        return maneSize;
+        return aManeSize;
     }
 }
