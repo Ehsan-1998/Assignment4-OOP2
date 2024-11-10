@@ -1,21 +1,19 @@
 package com.example.ZooApplication.Model;
 
-public class Lion extends BigCat{
-    private final int aWeight;
-    private final int aManeSize;
+public class Lion extends BigCat {
+    private int maneSize;
 
-    public Lion(String pName, int pAge, int pWeight, int pManeSize) {
-        super(pName, pAge); 
-        this.aWeight = pWeight;
-        this.aManeSize = pManeSize;
-    }
-
-    // Getters for weight and maneSize
-    public int getWeight() {
-        return aWeight;
+    public Lion(String name, int age, String sex, double weight, int maneSize) {
+        super(name, age, sex, weight);
+        this.maneSize = maneSize;
     }
 
     public int getManeSize() {
-        return aManeSize;
+        return maneSize;
+    }
+
+    public void setManeSize(int maneSize) {
+        this.maneSize = maneSize;
     }
 }
+

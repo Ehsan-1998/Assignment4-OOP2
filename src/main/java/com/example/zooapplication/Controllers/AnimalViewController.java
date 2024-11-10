@@ -1,12 +1,11 @@
 package com.example.ZooApplication.Controllers;
-
 import com.example.ZooApplication.Model.Animal;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+import com.example.ZooApplication.Model.Lion;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,101 +13,126 @@ import java.util.List;
 
 public class AnimalViewController{
    @FXML
-   private TextField nameTextField;
+   private TextField aNameTextField;
    @FXML
-   private TextField ageTextField;
+   private TextField aAgeTextField;
    @FXML
-   private TextField sexTextField;
+   private TextField aSexTextField;
    @FXML
-   private TextField weightTextField;
+   private TextField aWeightTextField;
+   @FXML
+   private TextField aManeSizeTextField;
 
-   private List<Animal> animals;
-   private Animal selectedAnimal;
+   private List<Animal> aAnimals;
+   private Animal aSelectedAnimal;
 
    public AnimalViewController(){
-       this.animals = loadAnimals();
+       this.aAnimals = loadAnimals();
    }
 
-    public void setAnimal(Animal animal) {
-        this.selectedAnimal = animal;
-        if (animal != null) {
-            nameTextField.setText(animal.getName());
-            sexTextField.setText(animal.getSex());
-            ageTextField.setText(String.valueOf(animal.getAge()));
-            weightTextField.setText(String.valueOf(animal.getWeight()));
+    public void setAnimal(Animal aAnimal) {
+        this.aSelectedAnimal = aAnimal;
+        if (aAnimal != null) {
+            aNameTextField.setText(aAnimal.getName());
+            aSexTextField.setText(aAnimal.getSex());
+            aAgeTextField.setText(String.valueOf(aAnimal.getAge()));
+            aWeightTextField.setText(String.valueOf(aAnimal.getWeight()));
+
+            if (aAnimal instanceof Lion) {
+                aManeSizeTextField.setVisible(true);
+                aManeSizeTextField.setText(String.valueOf(((Lion) aAnimal).getManeSize())); // Load mane size for Lion
+            } else {
+                aManeSizeTextField.setVisible(false);
+            }
         }
     }
+
 
     @FXML
     private void onSaveButtonClick() {
         try {
-            String name = nameTextField.getText();
-            String sex = sexTextField.getText();
-            int age = Integer.parseInt(ageTextField.getText());
-            double weight = Double.parseDouble(weightTextField.getText());
+            String aName = aNameTextField.getText();
+            String aSex = aSexTextField.getText();
+            int aAge = Integer.parseInt(aAgeTextField.getText());
+            double aWeight = Double.parseDouble(aWeightTextField.getText());
 
-            if (selectedAnimal == null) {
+            if (aSelectedAnimal == null) {
                 // Adding a new animal
-                Animal newAnimal = new Animal(name, sex, age, weight);
-                animals.add(newAnimal);
+                Animal aNewAnimal = new Animal(aName, aSex, aAge, aWeight);
+
+                // If the animal is a Lion, set the mane size
+                if (aSelectedAnimal instanceof Lion) {
+                    int maneSize = Integer.parseInt(aManeSizeTextField.getText());  // Mane size for Lions
+                    aNewAnimal = new Lion(aName, aAge, aSex, aWeight, maneSize);
+                }
+
+                aAnimals.add(aNewAnimal);
             } else {
                 // Modifying an existing animal
-                selectedAnimal.setName(name);
-                selectedAnimal.setSex(sex);
-                selectedAnimal.setAge(age);
-                selectedAnimal.setWeight(weight);
+                aSelectedAnimal.setName(aName);
+                aSelectedAnimal.setSex(aSex);
+                aSelectedAnimal.setAge(aAge);
+                aSelectedAnimal.setWeight(aWeight);
+
+                // If the animal is a Lion, update the mane size
+                if (aSelectedAnimal instanceof Lion) {
+                    int maneSize = Integer.parseInt(aManeSizeTextField.getText());
+                    ((Lion) aSelectedAnimal).setManeSize(maneSize);
+                }
             }
 
             saveAnimals();
             showConfirmation("Animal Saved", "Animal information has been saved successfully.");
             onClearButtonClick();
 
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException aE) {
             showError("Invalid input", "Please enter valid numbers for age and weight.");
         }
     }
 
     @FXML
     private void onCloseButtonClick() {
-       Stage stage = (Stage) nameTextField.getScene().getWindow();
-       stage.close();
+        Stage aStage = (Stage) aNameTextField.getScene().getWindow();
+        aStage.close();
     }
     @FXML
     private void onClearButtonClick() {
-        nameTextField.clear();
-        sexTextField.clear();
-        ageTextField.clear();
-        weightTextField.clear();
+        aNameTextField.clear();
+        aSexTextField.clear();
+        aAgeTextField.clear();
+        aWeightTextField.clear();
+        aManeSizeTextField.clear();
     }
 
     private void saveAnimals() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("animals.ser"))) {
-            oos.writeObject(animals);
-        } catch (IOException e) {
-            e.printStackTrace();
+        try (ObjectOutputStream aOos = new ObjectOutputStream(new FileOutputStream("animals.ser"))) {
+            aOos.writeObject(aAnimals);
+        } catch (IOException aE) {
+            aE.printStackTrace();
         }
     }
     private List<Animal> loadAnimals() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("animals.ser"))) {
-            return (List<Animal>) ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
+        try (ObjectInputStream aOis = new ObjectInputStream(new FileInputStream("animals.ser"))) {
+            return (List<Animal>) aOis.readObject();
+        } catch (IOException | ClassNotFoundException aE) {
             return new ArrayList<>();
-        }
+            }
     }
 
 
 
-    private void showError(String title, String message) {
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setContentText(message);
-        alert.showAndWait();
-   }
-    private void showConfirmation(String title, String message) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setContentText(message);
-        alert.showAndWait();
+    private void showError(String aTitle, String aMessage) {
+        Alert aAlert = new Alert(AlertType.ERROR);
+        aAlert.setTitle(aTitle);
+        aAlert.setContentText(aMessage);
+        aAlert.showAndWait();
+
+    }
+    private void showConfirmation(String aTitle, String aMessage) {
+        Alert aAlert = new Alert(AlertType.INFORMATION);
+        aAlert.setTitle(aTitle);
+        aAlert.setContentText(aMessage);
+        aAlert.showAndWait();
     }
 }
 

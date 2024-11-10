@@ -1,11 +1,10 @@
 package com.example.ZooApplication.Model;
 
-public class Cougar extends BigCat {
-    private final int aWeight;
+public final class Cougar extends BigCat {
 
-    public Cougar(String pName, int Page, int pWeight) {
-        super(pName, Page);
-        this.aWeight = pWeight;
+
+    public Cougar(String pName, int pAge, double pWeight , String pSex) {
+        super(pName, pAge, pSex, pWeight );  // Pass all arguments to BigCat constructor
     }
 
 
