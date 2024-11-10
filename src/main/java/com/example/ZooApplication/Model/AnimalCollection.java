@@ -8,10 +8,8 @@ public interface AnimalCollection {
     String getName();
 
 
-    void addCollection(AnimalCollection collection);
+    void addCollection(AnimalCollection pCollection);
 
 
-    void removeCollection(AnimalCollection collection);
-
-    Enclosure getEnclosureByName(String selectedEnclosureName);
+    Enclosure getEnclosureByName(String pSelectedEnclosureName);
 }

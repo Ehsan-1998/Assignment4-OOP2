@@ -4,44 +4,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Enclosure implements AnimalCollection {
-    private String name;
-    private final List<Animal> animals;
+    private String aName;
+    private final List<Animal> aAnimals;
 
     public Enclosure(){
-        animals =new ArrayList<>();
+        aAnimals =new ArrayList<>();
     }
 
     @Override
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String pName) {
+        this.aName = pName;
     }
 
     @Override
     public String getName() {
-        return name;
+        return aName;
     }
 
     @Override
-    public void addCollection(AnimalCollection collection) {
+    public void addCollection(AnimalCollection pCollection) {
 
     }
 
-    @Override
-    public void removeCollection(AnimalCollection collection) {
 
-    }
 
     @Override
-    public Enclosure getEnclosureByName(String selectedEnclosureName) {
+    public Enclosure getEnclosureByName(String pSelectedEnclosureName) {
         return null;
     }
 
-    public void addAnimal(Animal animal) {
-        animals.add(animal);
+    public void addAnimal(Animal pAnimal) {
+        aAnimals.add(pAnimal);
 
     }
 
     public List<Animal> getAnimals(){
-        return animals;
+        return aAnimals;
     }
 }

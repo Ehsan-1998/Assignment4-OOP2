@@ -1,15 +1,15 @@
 package com.example.ZooApplication.Model;
 
 public class Tiger extends  BigCat {
-    private final int weight;
+    private final int aWeight;
 
-    public Tiger(String name, int age, int weight) {
-        super(name, age); // Calling the constructor of the Animal superclass
-        this.weight = weight;
+    public Tiger(String pName, int pAge, int pWeight) {
+        super(pName, pAge);
+        this.aWeight = pWeight;
     }
 
     // Getter for weight
-    public int getWeight() {
-        return weight;
+    public int getaWeight() {
+        return aWeight;
     }
 }

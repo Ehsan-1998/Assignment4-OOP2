@@ -4,66 +4,62 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompositeAnimalCollection implements AnimalCollection {
-    private final List<AnimalCollection> collections;
-    private String name;
+    private final List<AnimalCollection> aCollections;
+    private String aName;
 
     public CompositeAnimalCollection() {
-        collections = new ArrayList<>();
+        aCollections = new ArrayList<>();
     }
 
     @Override
     public String getName() {
-        return name;
+        return aName;
     }
 
     @Override
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String pName) {
+        this.aName = pName;
     }
 
     @Override
-    public void addCollection(AnimalCollection collection) {
-        collections.add(collection);
-    }
-
-    @Override
-    public void removeCollection(AnimalCollection collection) {
-        collections.remove(collection);
+    public void addCollection(AnimalCollection pCollection) {
+        aCollections.add(pCollection);
     }
 
 
+
     @Override
-    public Enclosure getEnclosureByName(String selectedEnclosureName) {
-        for (AnimalCollection collection : collections) {
-            if (collection instanceof Enclosure enclosure) {
-                if (enclosure.getName().equals(selectedEnclosureName)) {
-                    return enclosure;
+    public Enclosure getEnclosureByName(String pSelectedEnclosureName) {
+        for (AnimalCollection aCollection : aCollections) {
+            if (aCollection instanceof Enclosure aEnclosure) {
+                if (aEnclosure.getName().equals(pSelectedEnclosureName)) {
+                    return aEnclosure;
                 }
-            } else if (collection instanceof CompositeAnimalCollection) {
-                Enclosure enclosure = ((CompositeAnimalCollection) collection).getEnclosureByName(selectedEnclosureName);
-                if (enclosure != null) {
-                    return enclosure;
+            } else if (aCollection instanceof CompositeAnimalCollection) {
+                Enclosure aEnclosure = ((CompositeAnimalCollection) aCollection).getEnclosureByName(pSelectedEnclosureName);
+                if (aEnclosure != null) {
+                    return aEnclosure;
                 }
             }
         }
         return null;
     }
 
-    public List<AnimalCollection> getCollections() {
-        return collections;
+    public List<AnimalCollection> getaCollections() {
+        return aCollections;
 
 
     }
 
-    public CompositeAnimalCollection getCompositeByName(String name) {
-        if (this.name.equals(name)) {
+    public CompositeAnimalCollection getCompositeByName(String pName) {
+        if (this.aName.equals(pName)) {
             return this;
         }
-        for (AnimalCollection collection : this.getCollections()) {
-            if (collection instanceof CompositeAnimalCollection composite) {
-                CompositeAnimalCollection found = composite.getCompositeByName(name);
-                if (found != null) {
-                    return found;
+        for (AnimalCollection aCollection : this.getaCollections()) {
+            if (aCollection instanceof CompositeAnimalCollection aComposite) {
+                CompositeAnimalCollection aFound = aComposite.getCompositeByName(pName);
+                if (aFound != null) {
+                    return aFound;
                 }
             }
         }

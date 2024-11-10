@@ -1,15 +1,13 @@
 package com.example.ZooApplication.Model;
 
 public class Cougar extends BigCat {
-    private final int weight;
+    private final int aWeight;
 
-    public Cougar(String name, int age, int weight) {
-        super(name, age);
-        this.weight = weight;
+    public Cougar(String pName, int Page, int pWeight) {
+        super(pName, Page);
+        this.aWeight = pWeight;
     }
 
 
-    public int getWeight() {
-        return weight;
-    }
+
 }
