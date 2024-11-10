@@ -1,4 +1,4 @@
-package com.example.zooapplication.Model;
+package com.example.ZooApplication.Model;
 
 import java.io.Serializable;
 

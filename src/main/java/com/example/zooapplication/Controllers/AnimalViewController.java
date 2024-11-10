@@ -1,6 +1,6 @@
-package com.example.zooapplication.Controllers;
+package com.example.ZooApplication.Controllers;
 
-import com.example.zooapplication.Model.Animal;
+import com.example.ZooApplication.Model.Animal;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
