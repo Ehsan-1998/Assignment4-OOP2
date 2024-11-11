@@ -1,6 +1,7 @@
 package com.example.ZooApplication.Controllers;
 
 import com.example.ZooApplication.Model.Enclosure;
+import com.example.ZooApplication.Model.Animal; // Ensure to import the Animal class
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
@@ -14,47 +15,47 @@ import java.io.IOException;
 public class AddAnimalController {
 
     @FXML
-    private TextField animalNameField;
+    private TextField aAnimalNameField;
 
     @FXML
-    private Button addButton;
+    private Button aAddButton;
 
     @FXML
-    private Button backButton;
+    private Button aBackButton;
 
-    private Enclosure enclosure;
+    private Enclosure aEnclosure;
 
-    public void setEnclosure(Enclosure enclosure) {
-        this.enclosure = enclosure;
+    public void setEnclosure(Enclosure pEnclosure) {
+        this.aEnclosure = pEnclosure;
     }
 
     @FXML
     protected void onAddButtonClick() {
-        String animalName = animalNameField.getText();
-        if (animalName != null && !animalName.isEmpty() && enclosure != null) {
-            Animal newAnimal = new Animal(animalName);
-            enclosure.addAnimal(newAnimal);
-            Stage stage = (Stage) addButton.getScene().getWindow();
-            stage.close();
+        String aAnimalName = aAnimalNameField.getText();
+        if (aAnimalName != null && !aAnimalName.isEmpty() && aEnclosure != null) {
+            Animal aNewAnimal = new Animal(aAnimalName);
+            aEnclosure.addAnimal(aNewAnimal);
+            Stage aStage = (Stage) aAddButton.getScene().getWindow();
+            aStage.close();
         }
     }
 
     @FXML
     protected void onBackButtonClick() {
-        Stage stage = (Stage) backButton.getScene().getWindow();
-        stage.close();
+        Stage aStage = (Stage) aBackButton.getScene().getWindow();
+        aStage.close();
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/path/to/enclosure-view.fxml"));
-            Parent root = fxmlLoader.load();
-            EnclosureViewController controller = fxmlLoader.getController();
-            controller.setEnclosure(enclosure);
+            FXMLLoader aFxmlLoader = new FXMLLoader(getClass().getResource("/path/to/enclosure-view.fxml"));
+            Parent aRoot = aFxmlLoader.load();
+            EnclosureViewController aController = aFxmlLoader.getController();
+            aController.setEnclosure(aEnclosure);
 
-            Stage mainStage = new Stage();
-            mainStage.setTitle(enclosure.getName());
-            mainStage.setScene(new Scene(root));
-            mainStage.initModality(Modality.APPLICATION_MODAL);
-            mainStage.show();
+            Stage aMainStage = new Stage();
+            aMainStage.setTitle(aEnclosure.getName());
+            aMainStage.setScene(new Scene(aRoot));
+            aMainStage.initModality(Modality.APPLICATION_MODAL);
+            aMainStage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
