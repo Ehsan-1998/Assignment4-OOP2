@@ -122,7 +122,7 @@ public class CompositeAnimalCollectionViewController  {
             }
         }
 
-        // Assuming you have a ListView to display the sub-enclosures of the composite collection
+        // a ListView to display the sub-enclosures of the composite collection
         aEnclosureListView.setItems(aSubEnclosures);
     }
 
